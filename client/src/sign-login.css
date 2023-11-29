@@ -1,0 +1,170 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+.form-section {
+	height: fit-content;
+	margin-right: 50px;
+	margin-top: 50px;
+	/* margin: 150px 120px 20px 130px; */
+
+	background-color: violet;
+	border-radius: 50px;
+	/* width: 50%; */
+	margin-bottom: 50px;
+}
+.signUp-form-section {
+	height: fit-content;
+
+	margin: 50px 120px 20px 130px;
+
+	background-color: violet;
+	border-radius: 50px;
+	width: 50%;
+}
+.form-wraper {
+	padding-left: 30px;
+	margin-right: 30px;
+	padding-bottom: 30px;
+}
+.error-message {
+	width: fit-content;
+	padding: 10px;
+	background-color: #fff;
+	color: red;
+	margin-top: 10px;
+	margin-left: 10%;
+	margin-right: 5%;
+	font-size: larger;
+}
+input {
+	width: 60%;
+	padding: 10px;
+
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	border-radius: 4px;
+}
+.log-in-btn {
+	padding: 10px;
+	color: #fff;
+	border-radius: 10px;
+	margin-left: 30%;
+	background-color: blue;
+}
+.viewButton {
+	list-style: none;
+	text-decoration: none;
+	color: #fff;
+}
+.sign-up-tab {
+	text-decoration: none;
+	/* margin-top: 50px; */
+}
+
+.checkBUtton {
+	width: auto;
+}
+link {
+	color: blue;
+}
+.sign-log-forget-tab:hover {
+	color: red;
+}
+.flex-items {
+	display: flex;
+}
+.tasks div {
+	display: flex;
+	justify-content: space-between;
+	width: min-content;
+	width: auto;
+}
+.check-box {
+	display: list-item;
+}
+
+.edit-link{
+	width: 200%;
+}
+.viewButton {
+	margin-top: 10px;
+	background-color: rgb(81, 43, 195);
+	padding: 0px 10px;
+
+	border-radius: 10px;
+	cursor: pointer;
+
+	border-radius: 10px;
+}
+.total-tasks{
+	padding: 5%;
+	border-radius: 20px;
+	text-align: center;
+	background-color: #fff;
+	color: rgb(3, 85, 58);
+}
+.task-complete{
+	color: aqua;
+}
+.viewButton-text {
+	color: #fff;
+	text-decoration: none;
+}
+.submit-btn {
+	margin-left: 0 !important;
+	padding: 10px 15px;
+	background-color: rgb(58, 58, 245);
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+	width: 200%;
+}
+.log-out {
+	margin-left: 70%;
+	color: blue;
+	margin-top: 1%;
+}
+.header {
+	background-color: #462f2f;
+	color: #fff;
+	position: fixed;
+
+	width: 100%;
+	top: 0;
+}
+.header div {
+	background-color: #462f2f;
+	color: #fff;
+	margin: 0 10% 0 70%;
+}
+.header ul {
+	justify-content: space-between;
+	padding: 5% 0;
+	display: flex;
+	/* margin: 0 0.5%; */
+}
+.header li {
+	color: #fff;
+}
+.edit-btn {
+	background-color: rgb(41, 41, 234);
+	color: #fff;
+	padding: 10px;
+	border-radius: 10px;
+}
+.home {
+	background-image: url(./Home/check.png);
+	/* height: 600px; */
+	background-size: cover;
+	background-position: center;
+	margin-top: -30px;
+
+}
+.edit-input{
+	display: flex;
+}
+.task-cmplete{
+	color: aquamarine;
+}

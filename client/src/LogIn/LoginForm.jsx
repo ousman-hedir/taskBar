@@ -1,32 +1,26 @@
-import { useState } from "react";
+// LoginForm.js
+
+import React, { useState } from "react";
 import axios from "axios";
-import "../sign-login.css";
 import { Link, useNavigate } from "react-router-dom";
+import "../sign-login.css"; 
 
 const LoginForm = () => {
 	const navigate = useNavigate();
 
-	// const [formData, setFormData] = useState({
-	// 	user_name: "",
-	// 	password: "",
-	// });
-	const [name, setName] = useState("");
-	const [password, setPassword] = useState("");
+	const [formData, setFormData] = useState({
+		user_name: "",
+		password: "",
+	});
 
 	const [errorMessage, setErrorMessage] = useState("");
 
 	const handleChange = (e) => {
-		if (e.target.name === "user_name") {
-			setName(e.target.value);
-		} else if (e.target.name === "password") {
-			setPassword(e.target.value);
-		}
-
-		// const { name, value } = e.target;
-		// setFormData((prevData) => ({
-		// 	...prevData,
-		// 	[name]: value,
-		// }));
+		const { name, value } = e.target;
+		setFormData((prevData) => ({
+			...prevData,
+			[name]: value,
+		}));
 	};
 
 	const handleLogin = async (e) => {
@@ -35,8 +29,7 @@ const LoginForm = () => {
 		try {
 			const response = await axios.post(
 				"http://localhost:5000/login",
-				name,
-				password
+				formData
 			);
 
 			console.log("Login successful", response.data);
@@ -56,77 +49,83 @@ const LoginForm = () => {
 	};
 
 	return (
-		<>
-			<div className="row">
-				<div className="col-6">
-					<h4 className="m-5">Well Come to Task Manager</h4>
-					<h5 className="ms-3">It is a way which will help manage Tasks </h5>
-				</div>
-				<div className="col-6 ">
-					<section className="form-section">
-						<div className="flex-items">
-							<div>
-								<h4 className="my-3 ms-5 pt-1 sign-up-tab">
-									Don't Have Account ?
-								</h4>
-							</div>
-							<div>
-								<Link to="/signUp">
-									<h4 className="my-3 ms-5 pt-1 sign-up-tab">
-										<span className="">Sign Up</span>
-									</h4>
-								</Link>
-							</div>
-						</div>
-
-						<div className="form-wraper">
-							{errorMessage && <p className="error-message">{errorMessage}</p>}
-							<form onSubmit={handleLogin}>
-								<h2 className="ms-2">Login</h2>
-
-								<div className="ms-5 mb-3">
-									<input
-										type="text"
-										id="user_name"
-										name="user_name"
-										placeholder="Username"
-										value={name}
-										onChange={handleChange}
-										required
-									/>
-								</div>
-
-								<div className="ms-5 mb-3">
-									<input
-										type="password"
-										id="password"
-										name="password"
-										value={password}
-										onChange={handleChange}
-										placeholder="Password"
-										required
-									/>
-								</div>
-
-								<div className=" ms-5 pb-2 mb">
-									<button className="log-in-btn" type="submit">
-										Login
-									</button>
-								</div>
-
-								<div className="my-2 ms-5 pt-5 ">
-									<Link to="/signUp">
-										<h4>
-											<span className="">Forget the Password ?</span>
-										</h4>
-									</Link>
-								</div>
-							</form>
-						</div>
-					</section>
+		<div className="row">
+			<div className="col-6 welcome-section">
+				<div className="welcome-text">
+					<h1 className="welcome-heading">Welcome to Task Manager</h1>
+					<p className="welcome-description">
+						Your all-in-one solution for streamlined task organization and
+						enhanced productivity. Simplify your daily schedule with
+						customizable task lists, deadline reminders, and collaborative
+						features. Take control of your workflow effortlessly, whether you're
+						a professional or a student. Achieve your goals with the simplicity
+						of Task Manager.
+					</p>
 				</div>
 			</div>
-		</>
+			<div className="col-6">
+				<section className="form-section">
+					<div className="flex-items">
+						<div>
+							<h4 className="my-3 ms-5 pt-1 sign-up-tab">
+								Don't Have an Account?
+							</h4>
+						</div>
+						<div>
+							<Link to="/signUp" className="viewButton">
+								<h4 className="my-3 ms-5 pt-1 sign-up-tab">Sign Up</h4>
+							</Link>
+						</div>
+					</div>
+
+					<div className="form-wraper">
+						{errorMessage && <p className="error-message">{errorMessage}</p>}
+						<form onSubmit={handleLogin}>
+							<h2 className="ms-2">Login</h2>
+
+							<div className="ms-5 mb-3 edit-input">
+								<input
+									type="text"
+									id="user_name"
+									name="user_name"
+									placeholder="Username"
+									value={formData.user_name}
+									onChange={handleChange}
+									required
+								/>
+								<Link to="/forgotPassword" className="log-out">
+									Forget Password?
+								</Link>
+							</div>
+
+							<div className="ms-5 mb-3">
+								<input
+									type="password"
+									id="password"
+									name="password"
+									value={formData.password}
+									onChange={handleChange}
+									placeholder="Password"
+									required
+								/>
+							</div>
+
+							<div className="ms-5 pb-2 mb">
+								<button className="submit-btn" type="submit">
+									Login
+								</button>
+							</div>
+
+							<div className="my-2 ms-5 pt-5 ">
+								<Link to="/forgotPassword" className="link">
+									<h4 className="sign-log-forget-tab">Forget the Password?</h4>
+								</Link>
+							</div>
+						</form>
+					</div>
+				</section>
+			</div>
+		</div>
 	);
 };
 

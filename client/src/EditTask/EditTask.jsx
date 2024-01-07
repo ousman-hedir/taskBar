@@ -1,34 +1,46 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../Header/Header";
+// import axios from "axios";
 
 function EditTask() {
 	const { id } = useParams();
-	const [eachTask, setEachTask] = useState("");
+	const [eachTask, setEachTask] = useState({});
 	const [eachNotes, setEachNotes] = useState("");
 	const [newTask, setNewTask] = useState("");
 	const [newNotes, setNewNotes] = useState("");
 	const [errorMessage, setErrorMessage] = useState("");
 	const [loading, setLoading] = useState(true);
+	const [completed, setCompleted] = useState(0);
 
+	// fetch inputs
 	async function fetchData() {
 		try {
+			setLoading(true);
 			const res = await fetch(`http://localhost:5000/task/${id}`);
 			const data = await res.json();
 
-			setEachTask(data);
-			setEachNotes(data.notes);
+			if (res.ok) {
+				if (data) {
+					setEachTask(data);
+					setEachNotes(data.notes);
+					setCompleted(data.completed);
+					console.log(completed);
+				}
+			} else {
+				console.error(Error);
+			}
+
+			setLoading(false);
 		} catch (error) {
+			setLoading(false);
 			console.log(error);
 		}
 	}
 
-	console.log(eachNotes);
-	console.log(eachTask.task_name);
-
 	useEffect(() => {
+		fetchData();
 		const loading = setTimeout(() => {
-			fetchData();
 			setLoading(false);
 		}, 500);
 
@@ -69,6 +81,12 @@ function EditTask() {
 		setNewNotes(e.target.value);
 	};
 
+	// check box
+	const handleCheckboxChange = () => {
+		setCompleted((preVal) => (preVal === 0 ? 1 : 0));
+		console.log(completed);
+	};
+
 	return (
 		<>
 			<Header
@@ -89,8 +107,21 @@ function EditTask() {
 				) : (
 					<div>
 						<div className=" ms-5">
-							<h4>Edit " {eachTask.task_name}" Task ?</h4>
+							<h4>Edit "{eachTask.task_name}" Task? </h4>
 						</div>
+
+						<h6>
+							{completed
+								? "Is your task Not Completed yet ?"
+								: "Is Your Task Completed ?"}
+							{/* Is Your Task Completed */}
+							<input
+								className="check-box-input me-5"
+								type="checkbox"
+								checked={completed}
+								onChange={handleCheckboxChange}
+							/>
+						</h6>
 
 						<div className="edit-input mt-3">
 							<h6 className="pt-4 me-4"> Task ID : {eachTask.id}</h6>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../sign-login.css";
 import Header from "../Header/Header";
+import axios from "axios";
 
 function Home() {
 	const [tasks, setTasks] = useState([]);
@@ -10,7 +11,7 @@ function Home() {
 	const [newNotes, setNewNotes] = useState("");
 	const [idToDelete, setIdToDelete] = useState(null);
 	const [errorMessage, setErrorMessage] = useState("");
-	const [completed, setCompleted] = useState("false");
+	const [completed, setCompleted] = useState(false);
 
 	// data fetching
 
@@ -74,7 +75,6 @@ function Home() {
 			setIdToDelete(null);
 		}
 	}, [idToDelete]);
-
 	// check box
 
 	const completeTask = async (id, completed, task_name, notes) => {
@@ -107,6 +107,7 @@ function Home() {
 			const { completed, task_name, notes } = taskToUpdate;
 			completeTask(taskId, !completed, task_name, notes);
 		}
+		// completeTask(taskId, !completed);
 	};
 
 	// task creating
@@ -165,7 +166,7 @@ function Home() {
 	return (
 		<div className="home">
 			<div>
-				<Header link1="/home" text1="Home" link2="/" text2="Log out" />
+				<Header link1="/" text1="Log out" />
 			</div>
 			<br />
 
@@ -240,7 +241,7 @@ function Home() {
 										<input
 											className="check-box-input me-5"
 											type="checkbox"
-											checked={task.completed}
+											checked={task.completed === 1 ? true : false}
 											onChange={() => handleCheckboxChange(task.id)}
 										/>
 									</div>

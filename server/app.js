@@ -45,7 +45,7 @@ app.patch("/task/:id", (req, res) => {
 	const id = req.params.id;
 	const name = req.body.task_name;
 	const notes = req.body.notes;
-	const completed = req.body.completed ? 1 : 0; // Convert boolean to 1 or 0
+	const completed = req.body.completed ? 1 : 0; 
 
 	if (completed === undefined) {
 		return res.status(400).send("Completed status is required!");

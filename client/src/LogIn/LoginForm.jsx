@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../sign-login.css"; 
+import Footer from "../Footer/Footer";
 
 const LoginForm = () => {
 	const navigate = useNavigate();
@@ -50,17 +51,19 @@ const LoginForm = () => {
 
 	return (
 		<div className="row">
-			<div className="col-6 welcome-section">
-				<div className="welcome-text">
-					<h1 className="welcome-heading">Welcome to Task Manager</h1>
-					<p className="welcome-description">
-						Your all-in-one solution for streamlined task organization and
-						enhanced productivity. Simplify your daily schedule with
-						customizable task lists, deadline reminders, and collaborative
-						features. Take control of your workflow effortlessly, whether you're
-						a professional or a student. Achieve your goals with the simplicity
-						of Task Manager.
-					</p>
+			<div className="col-6 ">
+				<div className="welcome-section">
+					<div className="welcome-text">
+						<h1 className="welcome-heading">Welcome to Task Manager</h1>
+						<p className="welcome-description">
+							Your all-in-one solution for streamlined task organization and
+							enhanced productivity. <br /> <br /> Simplify your daily schedule
+							with customizable task lists, deadline reminders, and
+							collaborative features. <br /> Take control of your workflow
+							effortlessly, whether you're a professional or a student. <br />
+							<br /> Achieve your goals with the simplicity of Task Manager.
+						</p>
+					</div>
 				</div>
 			</div>
 			<div className="col-6">
@@ -73,10 +76,11 @@ const LoginForm = () => {
 						</div>
 						<div>
 							<Link to="/signUp" className="viewButton">
-								<h4 className="my-3 ms-5 pt-1 sign-up-tab">Sign Up</h4>
+								<h4 className=" sign-up-tab">Sign Up</h4>
 							</Link>
 						</div>
 					</div>
+					{/* from input */}
 
 					<div className="form-wraper">
 						{errorMessage && <p className="error-message">{errorMessage}</p>}
@@ -93,9 +97,6 @@ const LoginForm = () => {
 									onChange={handleChange}
 									required
 								/>
-								<Link to="/forgotPassword" className="log-out">
-									Forget Password?
-								</Link>
 							</div>
 
 							<div className="ms-5 mb-3">
@@ -109,6 +110,7 @@ const LoginForm = () => {
 									required
 								/>
 							</div>
+							
 
 							<div className="ms-5 pb-2 mb">
 								<button className="submit-btn" type="submit">
@@ -117,14 +119,15 @@ const LoginForm = () => {
 							</div>
 
 							<div className="my-2 ms-5 pt-5 ">
-								<Link to="/forgotPassword" className="link">
-									<h4 className="sign-log-forget-tab">Forget the Password?</h4>
+								<Link  className="link">
+									<h6 className="sign-log-forget-tab">Forget the Password?</h6>
 								</Link>
 							</div>
 						</form>
 					</div>
 				</section>
 			</div>
+			<Footer/>
 		</div>
 	);
 };

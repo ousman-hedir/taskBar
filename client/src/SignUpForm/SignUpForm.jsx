@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../sign-login.css";
 import "../main.css"
 import "bootstrap/dist/css/bootstrap.min.css";
+import Footer from "../Footer/Footer";
 // import DataSummit from "../DataSummit/DataSummit";
 
 const SignupForm = () => {
@@ -34,7 +35,7 @@ const SignupForm = () => {
 				formData
 			);
 
-			console.log("Signup successful", response.data);
+			// console.log("Signup successful", response.data);
 
 			setErrorMessage("");
 
@@ -113,6 +114,7 @@ const SignupForm = () => {
 					</div>
 				</form>
 			</div>
+			<Footer/>
 		</section>
 	);
 };

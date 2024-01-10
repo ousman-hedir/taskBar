@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 // import axios from "axios";
 
 function EditTask() {
@@ -169,6 +170,7 @@ function EditTask() {
 					</div>
 				)}
 			</form>
+			<Footer/>
 		</>
 	);
 }

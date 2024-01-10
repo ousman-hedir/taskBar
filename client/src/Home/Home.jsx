@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "../sign-login.css";
 import Header from "../Header/Header";
 import axios from "axios";
+import Footer from "../Footer/Footer";
 
 function Home() {
 	const [tasks, setTasks] = useState([]);
@@ -286,6 +287,7 @@ function Home() {
 					</div>
 				)}
 			</section>
+			<Footer/>
 		</div>
 	);
 }
